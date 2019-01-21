@@ -1,4 +1,4 @@
-import urllib.request, json, os, sys
+import urllib.request, json, os, sys, yaml
 
 API_TOKEN = os.getenv('GITHUB_TOKEN', False)
 
@@ -25,3 +25,13 @@ def get_latest(git: str) -> str:
     except IndexError:
       print("\"" + git + "\" doesn't use releases or tags. I give up.")
       return "NULL"
+
+def load_config(file: str) -> dict:
+  with open(file) as config:
+    dep_status = yaml.safe_load(config)
+    for k_index, kit in enumerate(dep_status['kits']):
+      for r_index, release in enumerate(kit['releases']):
+        print("Checking release \"" + release['name'] + "\".")
+        dep_status['kits'][k_index]['releases'][r_index]['latest_version'] = get_latest(release['git'])
+  print("Loaded dependencies: " + str(dep_status))
+  return dep_status
