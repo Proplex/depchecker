@@ -2,8 +2,13 @@
 {% block title %}Genesis Dependency{% endblock %}
 
 {% block head %}
-{{ super() }}
-<meta name="robots" content="noindex" />
+  {{ super() }}
+  <meta name="robots" content="noindex" />
+{% endblock %}
+
+{% block scripts %}
+  {{super()}}
+  <script src="/static/js/main.js">
 {% endblock %}
 
 

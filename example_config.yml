@@ -33,3 +33,116 @@ kits:
       - name: haproxy
         version: 8.4.2
         git: cloudfoundry-incubator/haproxy-boshrelease
+  - name: Cloud Foundry
+    releases:
+      - name: binary-buildpack
+        version: 1.0.19
+        git: cloudfoundry/binary-buildpack-release
+      - name: bpm
+        version: 0.13.0
+        git: cloudfoundry-incubator/bpm-release
+      - name: capi
+        version: 1.70.0
+        git: cloudfoundry/capi-release
+      - name: cf-networking
+        version: 2.17.0
+        git: cloudfoundry/cf-networking-release
+      - name: cf-smoke-tests
+        git: cloudfoundry/cf-smoke-tests-release
+        version: 40.0.5
+      - name: cflinuxfs2
+        version: 1.242.0
+        git: cloudfoundry/cflinuxfs2-release
+      - name: consul
+        git: cloudfoundry-incubator/consul-release
+        version: 193
+      - name: diego
+        version: 2.19.0
+        git: cloudfoundry/diego-release
+      - name: dotnet-core-buildpack
+        version: 2.1.5
+        git: cloudfoundry/dotnet-core-buildpack-release
+      - name: garden-runc
+        version: 1.16.7
+        git: cloudfoundry/garden-runc-release
+      - name: go-buildpack
+        version: 1.8.28
+        git: cloudfoundry/go-buildpack-release
+      - name: java-buildpack
+        version: 4.16.1
+        git: cloudfoundry/java-buildpack-release
+      - name: loggregator
+        version: 104.0
+        git: cloudfoundry/loggregator-release
+      - name: nats
+        version: 26
+        git: cloudfoundry/nats-release
+      - name: nodejs-buildpack
+        version: 1.6.32
+        git: cloudfoundry/nodejs-buildpack-release
+      - name: php-buildpack
+        version: 4.3.61
+        git: cloudfoundry/php-buildpack-release
+      - name: python-buildpack
+        version: 1.6.21
+        git: cloudfoundry/python-buildpack-release
+      - name: routing
+        version: 0.182.0
+        git: cloudfoundry-incubator/cf-routing-release
+      - name: ruby-buildpack
+        version: 1.7.24
+        git: cloudfoundry/ruby-buildpack-release
+      - name: staticfile-buildpack
+        version: 1.4.32
+        git: cloudfoundry/staticfile-buildpack-release
+      - name: statsd-injector
+        version: 1.4.0
+        git: cloudfoundry/statsd-injector-release
+      - name: cf-syslog-drain
+        version: 7.1
+        git: cloudfoundry/cf-syslog-drain-release
+      - name: uaa
+        version: 62.0
+        git: cloudfoundry/uaa-release
+      - name: silk
+        version: 2.17.0
+        git: cloudfoundry/silk-release
+      - name: loggregator-agent
+        version: 2.3
+        git: cloudfoundry/loggregator-agent-release
+      - name: bosh-dns-aliases
+        version: 0.0.3
+        git: bosh-dns-aliases-release
+      - name: log-cache
+        git: cloudfoundry/log-cache-release
+        version: 2.0.2
+  - name: Prometheus
+    releases:
+      - name: prometheus
+        version: 23.1.0
+        git: bosh-prometheus/prometheus-boshrelease
+      - name: postgres
+        version: 20
+        git: cloudfoundry/postgres-release
+  - name: Jumpbox
+    releases:
+      - name: jumpbox
+        version: 4.5.0
+        git: cloudfoundry-community/jumpbox-boshrelease
+      - name: toolbelt
+        version: 3.4.2
+        git: cloudfoundry-community/toolbelt-boshrelease
+  - name: Blacksmith
+    releases:
+      - name: blacksmith
+        version: 1.0.3
+        git: blacksmith-community/blacksmith-boshrelease
+      - name: bosh
+        version: 268.1.0
+        git: cloudfoundry/bosh
+      - name: bpm
+        version: 0.12.3
+        git: cloudfoundry-incubator/bpm-release
+      - name: mariadb-forge
+        version: 0.0.1
+        git: blacksmith-community/mariadb-forge-boshrelease
