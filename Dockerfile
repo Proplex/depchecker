@@ -9,8 +9,8 @@ RUN git clone https://github.com/proplex/depchecker.git
 
 WORKDIR /depchecker
 
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
-ENTRYPOINT [ "python" ]
+ENTRYPOINT [ "python3" ]
 
 CMD [ "app.py" ]

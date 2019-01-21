@@ -1,5 +1,4 @@
-import urllib.request, json, os
-
+import urllib.request, json, os, sys
 
 API_TOKEN = os.getenv('GITHUB_TOKEN', False)
 

@@ -1,4 +1,4 @@
-import os, json, yaml, urllib.request, json, sys
+import os, yaml, urllib.request
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from models import get_latest
