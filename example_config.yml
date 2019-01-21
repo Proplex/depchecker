@@ -1,0 +1,35 @@
+---
+releases:
+  - name: UAA
+    version: 4.20.0
+    git: cloudfoundry/uaa-release
+
+kits:
+  - name: Minio
+    releases:
+      - name: minio-boshrelease
+        version: RELEASE.2018-12-06T01-27-43Z
+        git: minio/minio-boshrelease
+  - name: Concourse
+    releases:
+      - name: concourse
+        version: 3.14.1
+        git: concourse/concourse-bosh-release
+      - name: garden-runc
+        version: 1.14.0
+        git: cloudfoundry/garden-runc-release
+      - name: slack-notification-resource
+        version: 9
+        git: cloudfoundry-community/slack-notification-resource-boshrelease
+      - name: shout
+        version: 0.1.0
+        git: jhunt/shout-boshrelease
+      - name: postgres
+        version: 20
+        git: cloudfoundry/postgres-release
+      - name: locker
+        version: 0.2.1
+        git: cloudfoundry-community/locker-boshrelease
+      - name: haproxy
+        version: 8.4.2
+        git: cloudfoundry-incubator/haproxy-boshrelease

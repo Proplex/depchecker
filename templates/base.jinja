@@ -1,0 +1,16 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Genesis Dependency{% endblock %}
+
+{% block head %}
+{{ super() }}
+<meta name="robots" content="noindex" />
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row" style="padding-top: 10px;"><img src="/static/img/mary.png" class="img-rounded hidden-xs" height="60px"><h1 style="padding-top: 5px;">Genesis Dependency Checker</h1></div>
+        {% block page_content %}
+        {% endblock %}
+    </div>
+{% endblock %}

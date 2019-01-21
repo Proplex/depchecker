@@ -1,0 +1,6 @@
+---
+applications:
+- name: depchecker
+  memory: 128MB
+  instances: 1
+  buildpack: python_buildpack

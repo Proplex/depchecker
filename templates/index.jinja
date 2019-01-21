@@ -1,0 +1,38 @@
+{% extends "base.jinja" %}
+{% block page_content %}
+<p>
+    LISTEN UP SOLDIER, THIS IS WAR OUT HERE. WAR, I TELL YOU.
+    I NEED YOU TO MAKE SURE THESE DEPENDENCIES ARE KEPT UP-TO-DATE. OTHERWISE, WE'RE 0xDEADBEEF. CAPICHE?
+</p>
+<h2>Genesis Kits Overview</h2>
+<p>
+
+</p>
+
+  {% for kit in kits %}
+  <div class="row">
+    <div class="col-md-12">
+      <h4>{{kit['name']}}</h4>
+      <table class="table table-striped">
+        <thead>
+          <td><b>BOSH Release</b></td>
+          <td><b>Cur. Ver</b></td>
+          <td><b>Latest</b></td>
+        </thead>
+        {% for release in kit['releases']%}
+        <tr data-toggle="collapse" data-target="#{{release['name']}}" class="clickable">
+            <td>{{release['name']}}</td>
+            <td>{{release['version']}}</td>
+            <td>{{release['latest_version']}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  {% endfor %}
+
+
+
+
+</div>
+{% endblock %}
