@@ -8,7 +8,12 @@
 
 {% block scripts %}
   {{super()}}
-  <script src="/static/js/main.js">
+  <script src="/static/js/main.js"></script>
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link href="/static/css/main.css" rel="stylesheet">
 {% endblock %}
 
 

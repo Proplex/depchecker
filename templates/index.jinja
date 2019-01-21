@@ -1,18 +1,26 @@
 {% extends "base.jinja" %}
 {% block page_content %}
+
 <p>
     LISTEN UP SOLDIER, THIS IS WAR OUT HERE. WAR, I TELL YOU.
     I NEED YOU TO MAKE SURE THESE DEPENDENCIES ARE KEPT UP-TO-DATE. OTHERWISE, WE'RE 0xDEADBEEF. CAPICHE?
 </p>
-<h2>Genesis Kits Overview</h2>
-<p>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="modern" checked>
-  <label class="form-check-label" for="modern">
-    Hide dependencies that are up-to-date
-  </label>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Genesis Kits Overview</h2>
+  </div>
+  <div class="col-md-6">
+    <p>
+    <div class="form-check float-right">
+      <input class="form-check-input" type="checkbox" value="" checked onclick="toggleModern()">
+      <label class="form-check-label" for="modern">
+        Hide dependencies that are up-to-date
+      </label>
+    </div>
+    </p>
+  </div>
 </div>
-</p>
 
   {% for kit in kits %}
   <div class="row">

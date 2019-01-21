@@ -7,6 +7,8 @@ class Data():
   def __init__(self):
     self.config_file = os.getenv('DEPCHECK_CONFIG', "example_config.yml")
     self.internal_data = {'releases': [], 'kits': []}
+    
+    # mutexes to atomize editing config file and datastore
     self.file_mutex = Lock()
     self.data_mutex = Lock()
 
@@ -20,6 +22,7 @@ class Data():
 
   def write_config(self):
     with self.file_mutex:
+      # ensure datastore isn't updated while writing to disk
       with self.data_mutex:
         with open(self.config_file, 'w') as config:
           config.write(yaml.safe_dump(self.internal_data))
@@ -34,6 +37,8 @@ class Data():
     with self.data_mutex:
       for k_index, kit in enumerate(self.internal_data['kits']):
         for r_index, release in enumerate(kit['releases']):
+          # check if we've seen this release before, if so,
+          # then used cached version info (reduces GH API calls)
           if release['git'] in seen_releases:
             print("Using cached information for \"" + release['name'] + "\".")
             self.internal_data['kits'][k_index]['releases'][r_index]['latest_version'] = seen_releases[release['git']]
