@@ -1,16 +1,11 @@
-FROM ubuntu:16.04
+FROM python:3.6-alpine
 
 MAINTAINER David Lohle "Proplex@users.noreply.github.com"
 
-RUN apt-get update -y && \
-    apt-get install -y python3-pip python3-dev git
-
-RUN git clone https://github.com/proplex/depchecker.git
+COPY . /depchecker
 
 WORKDIR /depchecker
 
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
-ENTRYPOINT [ "python3" ]
-
-CMD [ "app.py" ]
+CMD ["python", "app.py"]
