@@ -1,4 +1,4 @@
-import os, json
+import os, json, yaml
 from flask import Flask, render_template, current_app, request
 from flask_bootstrap import Bootstrap
 from flask_basicauth import BasicAuth
@@ -28,6 +28,7 @@ def index():
   return render_template("index.jinja", releases=deps['releases'], kits=deps['kits'])
 
 @app.route('/update_git')
+@basic_auth.required
 def update_git():
   store.update_versions()
   return "OK"
@@ -44,15 +45,28 @@ def update_version():
         for release, release_info in data['kits'][kit]['releases'].items():
           if 'version' in release_info:
             continue
-    except Exception as err:
-      raise
+    except:
       print("Received invalid update payload.")
       return "MALFORMED", 400
 
     store.update_data(data)
     return "OK"
   return "BAD", 400
-  
+
+@app.route('/get_config')
+def get_config():
+  return store.get_config_raw()
+
+@app.route('/update_config', methods=['POST'])
+def update_config():
+  print(request.get_data())
+  try:
+    yaml.safe_load(request.get_data())
+  except:
+    print("Didn't get a valid YML file")
+    return "BAD", 400
+  store.write_config_raw(request.get_data())
+  return "OK"
 
 if __name__ == "__main__":
   store.load_config()

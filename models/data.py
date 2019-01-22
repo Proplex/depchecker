@@ -16,7 +16,7 @@ class Data():
   def load_config(self):
     with self.file_mutex:
       with self.data_mutex:
-        with open(self.config_file) as config:
+        with open(self.config_file, 'r') as config:
           self.internal_data = yaml.safe_load(config)
           print("Successfully loaded configuration to memory.")
 
@@ -27,6 +27,18 @@ class Data():
         with open(self.config_file, 'w') as config:
           config.write(yaml.safe_dump(self.internal_data, default_flow_style=False))
           print("Successfully saved configuration to disk.")
+
+  def write_config_raw(self, file_contents: str):
+    with self.file_mutex:
+      with open(self.config_file, 'wb') as config:
+        config.write(file_contents)
+        print("Successfully overwrote configuration.")
+    self.load_config()
+  
+  def get_config_raw(self):
+    with self.file_mutex:
+        with open(self.config_file, 'r') as config:
+          return config.read()
 
   def update_data(self, data: dict):
     with self.data_mutex:
