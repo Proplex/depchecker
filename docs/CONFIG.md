@@ -6,7 +6,7 @@ dependencies in a single Genesis Kit, while `releases` are used to
 track one-off releases that don't fit anywhere.
 
 An in-use, valid example can be found in the
-[example_config.yaml](example_config.yaml) file of this repo.
+[example_config.yml](example_config.yml) file of this repo.
 
 
 ## Releases

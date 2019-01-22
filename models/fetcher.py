@@ -66,6 +66,7 @@ def get_latest_http_index(url: str) -> str:
 
 
 def extract_version(name: str, reg: str) -> str:
+  # run provided regex on filename, used 
   version = regex.search(reg, name)
   try:
     print("--> Extracted: " + version[0])

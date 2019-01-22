@@ -20,7 +20,7 @@ now, I'm focusing on the parsing of various upstream tracking methods.
 ## Configuration
 
 Configuring DepChecker is (hopefully) straightforward, an example can
-be found on [example_config.yaml](example_config.yaml), and a more
+be found on [example_config.yml](example_config.yml), and a more
 in-depth explanation can be found in [docs/CONFIG.md](docs/CONFIG.md).
 
 ## API
