@@ -58,6 +58,7 @@ def get_config():
   return store.get_config_raw()
 
 @app.route('/update_config', methods=['POST'])
+@basic_auth.required
 def update_config():
   print(request.get_data())
   try:

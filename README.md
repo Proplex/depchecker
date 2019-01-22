@@ -35,3 +35,8 @@ An example:
 
 `curl --data-binary @config.yml -u USER:PASS -X POST
 http://localhost:8080/update_config`
+
+
+### `GET /get_config`
+
+Returns the configuration file in YAML text.
