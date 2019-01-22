@@ -1,42 +1,29 @@
 # DepChecker
 
-# API
+DepChecker is a web application for specific use in tracking remote
+dependencies. We maintain a lot of software that has large dependency
+trees and tracking upstream, much less updating the software, is a
+serious chore.
 
-Default credentials are `bober:pleasechange`. Please do what the
-password asks.
+The goal of this webapp is to take in a configuration file of known
+releases and to systematically discover A) current in-use version as
+well as B) current upstream latest version. Through periodic checking
+of upstream versions, the webapp will then notify maintainers that a
+new version is available, to which a maintainer can go out and do the
+needful.
 
-
-### `POST /update_versions` (auth required)
-
-Payload body is expected to be `'Content-Type': 'application/json'`
-with the following format:
-
-{"kits": {"kit_name": {"releases": {"release_name": {"version":
-"###"}}}}}
-
-An example: 
-
-`curl -d '{"kits": {"blacksmith": {"releases": {"blacksmith":
-{"version": "555"}}}}}' -H "Content-Type: application/json" -u
-USER:PASS -X POST http://localhost:8080/update_version`
+There's significant work still to be done in order to achieve it's
+intended goal. Feel free to open issues with feature requests. Right
+now, I'm focusing on the parsing of various upstream tracking methods.
 
 
-### `GET /update_git` (auth required)
+## Configuration
 
-No payload body expected. Calling this endpoint will refresh the
-latest upstream versions from GitHub.
+Configuring DepChecker is (hopefully) straightforward, an example can
+be found on [example_config.yaml](example_config.yaml), and a more
+in-depth explanation can be found in [docs/CONFIG.md](docs/CONFIG.md).
 
+## API
 
-### `POST /update_config` (auth required)
-
-Payload body is a YAML file (binary).
-
-An example:
-
-`curl --data-binary @config.yml -u USER:PASS -X POST
-http://localhost:8080/update_config`
-
-
-### `GET /get_config`
-
-Returns the configuration file in YAML text.
+DepChecker has a simple API right now, and you can view documentation
+about it in the [API.md](docs/API.md) doc.

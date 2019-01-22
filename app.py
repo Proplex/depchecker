@@ -24,7 +24,6 @@ store = Data()
 @app.route('/')
 def index():
   deps = store.get_data()
-  print(deps)
   return render_template("index.jinja", releases=deps['releases'], kits=deps['kits'])
 
 @app.route('/update_git')

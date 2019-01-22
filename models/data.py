@@ -47,17 +47,20 @@ class Data():
     with self.data_mutex:
       for kit, kit_info in self.internal_data['kits'].items():
         for release, release_info in kit_info['releases'].items():
-          # check if we've seen this release before, if so,
-          # then used cached version info (reduces GH API calls)
-          if release_info['git'] in seen_releases:
-            print("Using cached information for \"" + release + "\".")
-            self.internal_data['kits'][kit]['releases'][release]['latest_version'] = seen_releases[release_info['git']]
-          else:
-            print("Checking release \"" + release + "\".")
-            latest_release = get_latest(release_info['git'])
-            seen_releases[release_info['git']] = latest_release
-            self.internal_data['kits'][kit]['releases'][release]['latest_version'] = latest_release
-      print("Loaded dependencies: " + str(self.internal_data))
+          self.internal_data['kits'][kit]['releases'][release]['latest_version'] = get_latest(release_info)
+          # TODO: reimplement caching layer
+          # # check if we've seen this release before, if so,
+          # # then used cached version info (reduces GH API calls)
+          # if release_info['git'] in seen_releases:
+          #   print("Using cached information for \"" + release + "\".")
+          #    = seen_releases[release_info['git']]
+          # else:
+          #   print("Checking release \"" + release + "\".")
+          #   latest_release = get_latest(release_info['git'])
+          #   seen_releases[release_info['git']] = latest_release
+          #   self.internal_data['kits'][kit]['releases'][release]['latest_version'] = latest_release
+      print("Loaded " + str(len(self.internal_data['kits'].keys())) + " kits.")
+    self.write_config()
   
   def get_data(self) -> dict:
     with self.data_mutex:

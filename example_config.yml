@@ -51,7 +51,7 @@ kits:
         version: 7.1
       cflinuxfs2:
         git: cloudfoundry/cflinuxfs2-release
-        latest_version: 1.259.0
+        latest_version: 1.260.0
         version: 1.242.0
       consul:
         git: cloudfoundry-incubator/consul-release
@@ -79,7 +79,7 @@ kits:
         version: 4.16.1
       log-cache:
         git: cloudfoundry/log-cache-release
-        latest_version: 2.0.2
+        latest_version: 2.1.0
         version: 2.0.2
       loggregator:
         git: cloudfoundry/loggregator-release
@@ -171,6 +171,11 @@ kits:
         git: cloudfoundry-community/toolbelt-boshrelease
         latest_version: 3.4.2
         version: 3.4.2
+      wget:
+        http_index: https://ftp.gnu.org/gnu/wget/
+        latest_version: 1.20.1
+        regex: \d+(\.\d+)+
+        version: 1.18
   minio:
     display: Minio
     releases:
@@ -189,7 +194,7 @@ kits:
         git: bosh-prometheus/prometheus-boshrelease
         latest_version: 24.0.0
         version: 23.1.0
-last_updated: 1548176447
+last_updated: 1548188160
 releases:
   UAA:
     git: cloudfoundry/uaa-release
