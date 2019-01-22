@@ -5,7 +5,7 @@ kits:
       blacksmith:
         git: blacksmith-community/blacksmith-boshrelease
         latest_version: 1.0.3
-        version: '555'
+        version: 1.0.3
       bosh:
         git: cloudfoundry/bosh
         latest_version: 268.4.0
@@ -189,6 +189,7 @@ kits:
         git: bosh-prometheus/prometheus-boshrelease
         latest_version: 24.0.0
         version: 23.1.0
+last_updated: 1548176447
 releases:
   UAA:
     git: cloudfoundry/uaa-release

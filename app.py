@@ -1,5 +1,5 @@
 import os, json, yaml
-from flask import Flask, render_template, current_app, request
+from flask import Flask, render_template, current_app, request, send_file
 from flask_bootstrap import Bootstrap
 from flask_basicauth import BasicAuth
 from models.data import Data
@@ -55,14 +55,18 @@ def update_version():
 
 @app.route('/get_config')
 def get_config():
-  return store.get_config_raw()
+  return send_file(store.config_file, "depchecker_config.yml")
 
 @app.route('/update_config', methods=['POST'])
 @basic_auth.required
 def update_config():
-  print(request.get_data())
   try:
-    yaml.safe_load(request.get_data())
+    # check to see if this is a valid YAML config.
+    test_yaml = yaml.safe_load(request.get_data())
+    # make sure uploaded YAML file is current. don't want to roll back.
+    if test_yaml['last_updated'] <= store.get_data()['last_updated']:
+      print("File uploaded is an out-of-date config.")
+      return "OUT-OF-DATE", 400
   except:
     print("Didn't get a valid YML file")
     return "BAD", 400

@@ -1,4 +1,4 @@
-import json, os, sys, yaml, collections
+import json, os, sys, yaml, collections, time
 from threading import Lock
 from .fetcher import get_latest
 
@@ -6,7 +6,7 @@ class Data():
 
   def __init__(self):
     self.config_file = os.getenv('DEPCHECK_CONFIG', "example_config.yml")
-    self.internal_data = {'releases': [], 'kits': []}
+    self.internal_data = {'releases': [], 'kits': [], 'last_updated': time.time()}
     
     # mutexes to atomize editing config file and datastore
     self.file_mutex = Lock()
@@ -24,6 +24,7 @@ class Data():
     with self.file_mutex:
       # ensure datastore isn't updated while writing to disk
       with self.data_mutex:
+        self.internal_data['last_updated'] = int(time.time())
         with open(self.config_file, 'w') as config:
           config.write(yaml.safe_dump(self.internal_data, default_flow_style=False))
           print("Successfully saved configuration to disk.")
@@ -34,15 +35,11 @@ class Data():
         config.write(file_contents)
         print("Successfully overwrote configuration.")
     self.load_config()
-  
-  def get_config_raw(self):
-    with self.file_mutex:
-        with open(self.config_file, 'r') as config:
-          return config.read()
 
   def update_data(self, data: dict):
     with self.data_mutex:
       dict_merge(self.internal_data, data)
+    self.internal_data['last_updated'] = int(time.time())
     self.write_config()
 
   def update_versions(self):
