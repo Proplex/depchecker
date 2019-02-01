@@ -34,7 +34,7 @@
           <td class="w-25"><b>Latest</b></td>
         </thead>
         {% for release, release_info in kit_info['releases'].items()|sort() %}
-          <tr data-toggle="collapse" data-target="#{{release}}" class="clickable {% if release_info['version'] == release_info['latest_version'] %} modern{% endif %}">
+          <tr data-toggle="collapse" data-target="#{{release}}" class="clickable {% if release_info['version']|string == release_info['latest_version']|string %} modern{% endif %}">
               <td>{{release}}</td>
               <td>{{release_info['version']}}</td>
               <td>{{release_info['latest_version']}}</td>

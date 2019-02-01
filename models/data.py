@@ -1,4 +1,4 @@
-import json, os, sys, yaml, collections, time
+import json, os, sys, yaml, collections, time, boto3
 from threading import Lock
 from .fetcher import get_latest
 
@@ -12,34 +12,70 @@ class Data():
     self.file_mutex = Lock()
     self.data_mutex = Lock()
 
-  # load configuration from disk to memory
+
+
+  # load configuration for s3, and fetch data from s3
   def load_config(self):
     with self.file_mutex:
       with self.data_mutex:
+        info = ""
         with open(self.config_file, 'r') as config:
-          self.internal_data = yaml.safe_load(config)
-          print("Successfully loaded configuration to memory.")
+          info = yaml.safe_load(config)
+      sesh = boto3.Session(
+        aws_access_key_id=info['s3']['aws_access_key_id'],
+        aws_secret_access_key=info['s3']['aws_secret_access_key'],
+        region_name=info['s3']['region'])
+      s3 = sesh.resource('s3')
+      content = s3.Object(
+        bucket_name=info['s3']['bucket_name'],
+        key='data.yml')
+      remote_data = content.get()['Body'].read().decode('utf-8')
+      self.internal_data = yaml.safe_load(remote_data)
+      print("Successfully loaded data from S3 to memory.")
 
   def write_config(self):
     with self.file_mutex:
-      # ensure datastore isn't updated while writing to disk
       with self.data_mutex:
-        self.internal_data['last_updated'] = int(time.time())
-        with open(self.config_file, 'w') as config:
-          config.write(yaml.safe_dump(self.internal_data, default_flow_style=False))
-          print("Successfully saved configuration to disk.")
+        info = ""
+        with open(self.config_file, 'r') as config:
+          info = yaml.safe_load(config)
+      sesh = boto3.Session(
+        aws_access_key_id=info['s3']['aws_access_key_id'],
+        aws_secret_access_key=info['s3']['aws_secret_access_key'],
+        region_name=info['s3']['region'])
+      s3 = sesh.resource('s3')
+      content = s3.Object(
+        bucket_name=info['s3']['bucket_name'],
+        key='data.yml')
+      s3.Object(
+        bucket_name=info['s3']['bucket_name'],
+        key='data.yml').put(
+          Body=yaml.safe_dump(self.internal_data, default_flow_style=False))
+      print("Successfully uploaded data from memory to S3.")
 
   def write_config_raw(self, file_contents: str):
     with self.file_mutex:
-      with open(self.config_file, 'wb') as config:
-        config.write(file_contents)
-        print("Successfully overwrote configuration.")
+      sesh = boto3.Session(
+        aws_access_key_id=info['s3']['aws_access_key_id'],
+        aws_secret_access_key=info['s3']['aws_secret_access_key'],
+        region_name=info['s3']['region'])
+      s3 = sesh.resource('s3')
+      content = s3.Object(
+        bucket_name=info['s3']['bucket_name'],
+        key='data.yml')
+      s3.Object(
+        bucket_name=info['s3']['bucket_name'],
+        key='data.yml').put(
+          Body=file_contents)
+    print("Successfully uploaded data to S3.")
     self.load_config()
+
 
   def update_data(self, data: dict):
     with self.data_mutex:
       dict_merge(self.internal_data, data)
     self.internal_data['last_updated'] = int(time.time())
+    print("Successfully updated data in memory.")
     self.write_config()
 
   def update_versions(self):

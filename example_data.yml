@@ -1,0 +1,309 @@
+---
+kits:
+  blacksmith:
+    display: Blacksmith
+    releases:
+      blacksmith:
+        git: blacksmith-community/blacksmith-boshrelease
+        latest_version: 1.0.3
+        version: 1.0.3
+      bosh:
+        git: cloudfoundry/bosh
+        latest_version: 268.6.0
+        version: 268.1.0
+      bosh-aws-cpi:
+        git: cloudfoundry-incubator/bosh-aws-cpi-release
+        latest_version: '73'
+        version: 72
+      bosh-azure-cpi:
+        git: cloudfoundry-incubator/bosh-azure-cpi-release
+        latest_version: 35.5.0
+        version: 35.4.0
+      bosh-google-cpi:
+        git: cloudfoundry-incubator/bosh-google-cpi-release
+        latest_version: 29.0.0
+        version: 27.0.1
+      bosh-openstack-cpi:
+        git: cloudfoundry-incubator/bosh-openstack-cpi-release
+        latest_version: '42'
+        version: 39
+      bosh-vsphere-cpi:
+        git: cloudfoundry-incubator/bosh-vsphere-cpi-release
+        latest_version: '52'
+        version: 50
+      bpm:
+        git: cloudfoundry-incubator/bpm-release
+        latest_version: 1.0.2
+        version: 0.12.3
+      mariadb-forge:
+        git: blacksmith-community/mariadb-forge-boshrelease
+        latest_version: 0.1.0
+        version: 0.0.1
+      postgresql-forge:
+        git: blacksmith-community/postgresql-forge-boshrelease
+        latest_version: 0.2.0
+        version: 0.1.1
+      rabbitmq-forge:
+        git: blacksmith-community/rabbitmq-forge-boshrelease
+        latest_version: 0.2.0
+        version: 0.1.3
+      redis-forge:
+        git: blacksmith-community/redis-forge-boshrelease
+        latest_version: 0.3.0
+        version: 0.2.1
+  bosh:
+    display: BOSH
+    releases:
+      bosh:
+        git: cloudfoundry/bosh
+        latest_version: 268.6.0
+        version: 268.5.0
+      bosh-aws-cpi:
+        git: cloudfoundry-incubator/bosh-aws-cpi-release
+        latest_version: '73'
+        version: 73
+      bosh-azure-cpi:
+        git: cloudfoundry-incubator/bosh-azure-cpi-release
+        latest_version: 35.5.0
+        version: 35.5.0
+      bosh-google-cpi:
+        git: cloudfoundry-incubator/bosh-google-cpi-release
+        latest_version: 29.0.0
+        version: 27.0.1
+      bosh-openstack-cpi:
+        git: cloudfoundry-incubator/bosh-openstack-cpi-release
+        latest_version: '42'
+        version: 41
+      bosh-vsphere-cpi:
+        git: cloudfoundry-incubator/bosh-vsphere-cpi-release
+        latest_version: '52'
+        version: 51
+      bosh-warden-cpi:
+        git: cppforlife/bosh-warden-cpi-release
+        latest_version: '41'
+        version: 40
+      bpm:
+        git: cloudfoundry-incubator/bpm-release
+        latest_version: 1.0.2
+        version: 0.12.3
+      credhub:
+        git: pivotal-cf/credhub-release
+        latest_version: 2.1.2
+        version: 2.0.2
+      garden-runc:
+        git: cloudfoundry/garden-runc-release
+        latest_version: 1.18.0
+        version: 1.16.3
+      os-conf:
+        git: cloudfoundry/os-conf-release
+        latest_version: '19'
+        version: 20
+      port-forwarding:
+        git: cloudfoundry-community/port-forwarding-boshrelease
+        latest_version: '6'
+        version: 6
+      uaa:
+        git: cloudfoundry/uaa-release
+        latest_version: '68.0'
+        version: 64.0
+  cf:
+    display: Cloud Foundry
+    releases:
+      binary-buildpack:
+        git: cloudfoundry/binary-buildpack-release
+        latest_version: 1.0.28
+        version: 1.0.19
+      bosh-dns-aliases:
+        git: cloudfoundry/bosh-dns-aliases-release
+        latest_version: 0.0.3
+        version: 0.0.3
+      bpm:
+        git: cloudfoundry-incubator/bpm-release
+        latest_version: 1.0.2
+        version: 0.13.0
+      capi:
+        git: cloudfoundry/capi-release
+        latest_version: 1.76.0
+        version: 1.70.0
+      cf-networking:
+        git: cloudfoundry/cf-networking-release
+        latest_version: 2.20.0
+        version: 2.17.0
+      cf-smoke-tests:
+        git: cloudfoundry/cf-smoke-tests-release
+        latest_version: 40.0.44
+        version: 40.0.5
+      cf-syslog-drain:
+        git: cloudfoundry/cf-syslog-drain-release
+        latest_version: '8.2'
+        version: 7.1
+      cflinuxfs2:
+        git: cloudfoundry/cflinuxfs2-release
+        latest_version: 1.261.0
+        version: 1.242.0
+      consul:
+        git: cloudfoundry-incubator/consul-release
+        latest_version: '198'
+        version: 193
+      diego:
+        git: cloudfoundry/diego-release
+        latest_version: 2.27.0
+        version: 2.19.0
+      dotnet-core-buildpack:
+        git: cloudfoundry/dotnet-core-buildpack-release
+        latest_version: 2.2.4
+        version: 2.1.5
+      garden-runc:
+        git: cloudfoundry/garden-runc-release
+        latest_version: 1.18.0
+        version: 1.16.7
+      go-buildpack:
+        git: cloudfoundry/go-buildpack-release
+        latest_version: 1.8.31
+        version: 1.8.28
+      java-buildpack:
+        git: cloudfoundry/java-buildpack-release
+        latest_version: 4.17.2
+        version: 4.16.1
+      log-cache:
+        git: cloudfoundry/log-cache-release
+        latest_version: 2.1.0
+        version: 2.0.2
+      loggregator:
+        git: cloudfoundry/loggregator-release
+        latest_version: '104.5'
+        version: 104.0
+      loggregator-agent:
+        git: cloudfoundry/loggregator-agent-release
+        latest_version: '3.4'
+        version: 2.3
+      nats:
+        git: cloudfoundry/nats-release
+        latest_version: '26'
+        version: 26
+      nodejs-buildpack:
+        git: cloudfoundry/nodejs-buildpack-release
+        latest_version: 1.6.40
+        version: 1.6.32
+      php-buildpack:
+        git: cloudfoundry/php-buildpack-release
+        latest_version: 4.3.68
+        version: 4.3.61
+      python-buildpack:
+        git: cloudfoundry/python-buildpack-release
+        latest_version: 1.6.27
+        version: 1.6.21
+      routing:
+        git: cloudfoundry-incubator/cf-routing-release
+        latest_version: 0.185.0
+        version: 0.182.0
+      ruby-buildpack:
+        git: cloudfoundry/ruby-buildpack-release
+        latest_version: 1.7.29
+        version: 1.7.24
+      silk:
+        git: cloudfoundry/silk-release
+        latest_version: 2.20.0
+        version: 2.17.0
+      staticfile-buildpack:
+        git: cloudfoundry/staticfile-buildpack-release
+        latest_version: 1.4.37
+        version: 1.4.32
+      statsd-injector:
+        git: cloudfoundry/statsd-injector-release
+        latest_version: 1.6.0
+        version: 1.4.0
+      uaa:
+        git: cloudfoundry/uaa-release
+        latest_version: '68.0'
+        version: 62.0
+  concourse:
+    display: Concourse
+    releases:
+      concourse:
+        git: concourse/concourse-bosh-release
+        latest_version: 4.2.2
+        version: 3.14.1
+      garden-runc:
+        git: cloudfoundry/garden-runc-release
+        latest_version: 1.18.0
+        version: 1.14.0
+      haproxy:
+        git: cloudfoundry-incubator/haproxy-boshrelease
+        latest_version: 9.4.1
+        version: 8.4.2
+      locker:
+        git: cloudfoundry-community/locker-boshrelease
+        latest_version: 0.2.1
+        version: 0.2.1
+      postgres:
+        git: cloudfoundry/postgres-release
+        latest_version: '34'
+        version: 20
+      shout:
+        git: jhunt/shout-boshrelease
+        latest_version: 0.1.0
+        version: 0.1.0
+      slack-notification-resource:
+        git: cloudfoundry-community/slack-notification-resource-boshrelease
+        latest_version: '7'
+        version: 9
+  jumpbox:
+    display: Jumpbox
+    releases:
+      jumpbox:
+        git: cloudfoundry-community/jumpbox-boshrelease
+        latest_version: 4.5.1
+        version: 4.5.0
+      openvpn:
+        git: dpb587/openvpn-bosh-release
+        latest_version: 5.2.0
+        version: 3.2.0
+      toolbelt:
+        git: cloudfoundry-community/toolbelt-boshrelease
+        latest_version: 3.4.2
+        version: 3.4.2
+  minio:
+    display: Minio
+    releases:
+      minio-boshrelease:
+        git: minio/minio-boshrelease
+        latest_version: RELEASE.2018-11-17T01-23-48Z
+        version: RELEASE.2018-12-06T01-27-43Z
+  prometheus:
+    display: Prometheus
+    releases:
+      postgres:
+        git: cloudfoundry/postgres-release
+        latest_version: '34'
+        version: 20
+      prometheus:
+        git: bosh-prometheus/prometheus-boshrelease
+        latest_version: 24.0.0
+        version: 23.1.0
+  shield:
+    display: SHIELD
+    releases:
+      shield:
+        git: starkandwayne/shield-boshrelease
+        latest_version: 8.0.18
+        version: 8.0.16
+  squid:
+    display: Squid
+    releases:
+      squid:
+        git: cloudfoundry-community/squid-boshrelease
+        latest_version: 1.0.1
+        version: 1.0.1
+  vault:
+    display: Vault
+    releases:
+      safe:
+        git: cloudfoundry-community/safe-boshrelease
+        latest_version: 0.2.0
+        version: 0.1.0
+last_updated: 1548957081
+releases:
+  UAA:
+    git: cloudfoundry/uaa-release
+    version: 4.20.0

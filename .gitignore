@@ -113,3 +113,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# DepChecker related things
+config.yml
+data.yml
