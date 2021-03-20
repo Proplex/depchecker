@@ -13,7 +13,7 @@ Flask-Bootstrap4==4.0.2
 html5lib==1.0.1
 idna==2.8
 itsdangerous==1.1.0
-Jinja2==2.10
+Jinja2==2.11.3
 jmespath==0.9.3
 MarkupSafe==1.1.0
 python-dateutil==2.7.5
